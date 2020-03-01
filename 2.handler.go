@@ -1,7 +1,7 @@
 package main
 
 import (
-	pb "github.com/ruandao/micro-shippy-user-service/ser/proto/user"
+	pb "github.com/ruandao/micro-shippy-user-service-ser/proto/user"
 	"golang.org/x/crypto/bcrypt"
 	"golang.org/x/net/context"
 )

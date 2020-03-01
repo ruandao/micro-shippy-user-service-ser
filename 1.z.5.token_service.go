@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/dgrijalva/jwt-go"
-	pb "github.com/ruandao/micro-shippy-user-service/ser/proto/user"
+	pb "github.com/ruandao/micro-shippy-user-service-ser/proto/user"
 	"time"
 )
 

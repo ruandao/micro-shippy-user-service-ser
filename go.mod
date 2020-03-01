@@ -1,4 +1,4 @@
-module github.com/ruandao/micro-shippy-user-service/ser
+module github.com/ruandao/micro-shippy-user-service-ser
 
 go 1.13
 

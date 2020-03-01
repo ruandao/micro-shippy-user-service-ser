@@ -3,7 +3,7 @@ package main
 import (
 	"context"
 	"github.com/jinzhu/gorm"
-	pb "github.com/ruandao/micro-shippy-user-service/ser/proto/user"
+	pb "github.com/ruandao/micro-shippy-user-service-ser/proto/user"
 )
 
 type User struct {

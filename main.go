@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/micro/go-micro"
-	pb "github.com/ruandao/micro-shippy-user-service/ser/proto/user"
+	pb "github.com/ruandao/micro-shippy-user-service-ser/proto/user"
 	"log"
 )
 
