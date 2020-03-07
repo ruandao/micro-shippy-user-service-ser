@@ -1,9 +1,10 @@
-package main
+package lib
 
 import (
 	"context"
 	"github.com/jinzhu/gorm"
 	pb "github.com/ruandao/micro-shippy-user-service-ser/proto/user"
+	"log"
 )
 
 type User struct {
@@ -76,11 +77,13 @@ type Repository interface {
 }
 
 type UserRepository struct {
-	db *gorm.DB
+	DB *gorm.DB
 }
 
 func (repo *UserRepository) Create(ctx context.Context, user *pb.User) error {
-	if err := repo.db.Create(user).Error; err != nil {
+	xUser := MarshalUser(user)
+	log.Printf("user: %v", xUser)
+	if err := repo.DB.Create(xUser).Error; err != nil {
 		return err
 	}
 	return nil
@@ -88,7 +91,7 @@ func (repo *UserRepository) Create(ctx context.Context, user *pb.User) error {
 
 func (repo *UserRepository) GetByEmail(ctx context.Context, email string) (*User, error) {
 	user := &User{Email:email}
-	if err := repo.db.First(&user).Error; err != nil {
+	if err := repo.DB.First(&user).Error; err != nil {
 		return nil, err
 	}
 	return user, nil
@@ -96,7 +99,7 @@ func (repo *UserRepository) GetByEmail(ctx context.Context, email string) (*User
 
 func (repo *UserRepository) GetAll(ctx context.Context) ([]*User, error) {
 	var users []*User
-	if err := repo.db.Find(&users).Error; err != nil {
+	if err := repo.DB.Find(&users).Error; err != nil {
 		return nil, err
 	}
 	return users, nil
@@ -105,7 +108,7 @@ func (repo *UserRepository) GetAll(ctx context.Context) ([]*User, error) {
 func (repo *UserRepository) Get(ctx context.Context, id string) (*User, error) {
 	user := &User{}
 	user.Id = id
-	if err := repo.db.First(user).Error; err != nil {
+	if err := repo.DB.First(user).Error; err != nil {
 		return nil, err
 	}
 	return user, nil

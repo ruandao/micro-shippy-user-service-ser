@@ -22,4 +22,5 @@ RUN mkdir /app
 WORKDIR /app
 COPY --from=builder /app/shippy-service-user .
 
-CMD ["./shippy-service-user"]
+ADD start.sh .
+CMD ["sh",  "start.sh"]
